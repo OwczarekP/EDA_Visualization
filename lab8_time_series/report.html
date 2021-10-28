@@ -1,0 +1,123 @@
+﻿<html>
+    <head>
+        <title>Data analysis and visualization lab 8</title>
+        <style>
+            figure {
+                height: 600px;
+                width: 800px;
+                align-content: center;
+            }
+        </style>
+       <!-- Required meta tags -->
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous"/>
+
+    <title>DAV_lab07</title>
+      <style>
+          .container {
+    height: 100%;
+    justify-content: center;
+    align-items: center;}
+          figcaption{
+              font-size: small;
+          }
+
+      </style>
+    </head>
+    <body class="container">
+	<h1>Data analysis and visualization, lab 8</h1>
+	<h2>Patrycja Owczarek</h2>
+<hr/>
+	<h3>REQUIREMENTS:</h3>
+	<code>pandas~=1.2.3<br/>matplotlib~=3.3.4<br/>plotly~=4.14.3<br/>statsmodels~=0.12.2<br/>scikit-learn~=0.24.1</code>
+<h3>Running the scripts - plots</h3>
+    <p>To run the script open the terminal and navigate to the ./scripts folder. Then type following:</p>
+    <code>python figX.py -o mode</code>
+    <p>Where X is the number of task (for example: task2a.py)</p><p>and mode can be either 0 or 1</p>
+    <p>mode 0 only shows the plot, while mode 1 save the plot in png file and return the path to the plot</p>
+<h3>CREATE PLOTS</h3>
+    <p>For the plots I've created two versions - one plotly interactive plot with the monthly average values, to check the seasonality of the data, and the static plot with shows only yearly values. In this report, I will present the interactive plot. The static plot is saved in the images folder.
+        Although the interactive plot may seem less readable, the number of methods we can make them readable is very wide - with the interpretation I will focus on separated cities and at a maximum of 10 years, to check the seasonality of the data.</p>
+    <embed src="images/fig1.html" width="100%" height="600px">
+        <figcaption>Fig.1 - Monthly average temperature for selected cities in New Zealand over years</figcaption>
+    <embed src="images/fig2.html" width="100%" height="600px">
+        <figcaption>Fig.2 - Monthly average temperature for selected cities in Japan over years</figcaption>
+    <embed src="images/fig3.html" width="100%" height="600px">
+        <figcaption>Fig.3 - Monthly average temperature for selected cities in Ukraine over years</figcaption>
+    <embed src="images/fig4.html" width="100%" height="600px">
+        <figcaption>Fig.4 - Monthly average temperature for selected cities in Brazil over years</figcaption>
+    <embed src="images/fig5.html" width="100%" height="600px">
+        <figcaption>Fig.5 - Monthly average temperature for selected cities in South Africa over years</figcaption>
+    <embed src="images/fig6.html" width="100%" height="600px">
+        <figcaption>Fig.6 - Monthly average temperature for selected cities in France over years</figcaption>
+    <embed src="images/fig7.html" width="100%" height="600px">
+        <figcaption>Fig.7 - Monthly average temperature for selected cities in Sweden over years</figcaption>
+    <embed src="images/fig8.html" width="100%" height="600px">
+        <figcaption>Fig.8 - Monthly average temperature for selected cities in Poland over years<br/> </figcaption>
+    <p></p>
+    <p>For all examples, we can see that the temperature around April-May starts increasing and around Jul-Aug decreasing. For New Zealand the month is flipped - increasing in the Jun-Aug and decreasing around Jan-Feb. This clearly shows us that each country has a strongly seasonal average temperature. </p>
+    <h3>FORECASTING MODELS - INTRODUCTION</h3>
+	<p>Choose models:</p>
+	<ul><li>Autoregression</li>
+		<li>Seasonal Autoregressive Integrated Moving-Average</li>
+		<li>Holt Winters Expotential Smoothing</li></ul>
+	<p>At first I wanted to check if the data are either stationary or non-stationary.</p>
+	<p>The result for the yearly data:</p>
+
+	<code>ADF Statistic: -0.271173 <br> p-value: 0.929489</code>
+<p>As we can see the p-value is clearly very high, which means we can accept the hypothesis that our data are not stationary.  Fortunately, we use the models that have the seasonality options, which means we don't need to transform our data.</p>
+	<h3>FORECASTING MODEL - AUTOREGRESSION</h3>
+    <p>For the autoregression I've decided to manually check which lags gave the best model. For both countries the best lags were 20.</p>
+    <figure>
+        <img src="images/jap_ar.png" alt="Japan autoregression plot" style="width:100%"/>
+        <figcaption>Fig.9 - The autoregression model and forecasting for Japan average temperature</figcaption>
+    </figure>
+            <p></p><figure>
+        <img src="images/nzl_ar.png" alt="New Zealand autoregression plot" style="width:100%"/>
+        <figcaption>Fig.10 - The autoregression model and forecasting for New Zealand average temperature</figcaption>
+    </figure>
+	<p></p>
+	<h3>FORECASTING MODEL - SARIMA</h3>
+    <p>For SARIMA model I've decided to calculate which parameters for p, q, P, Q will give us the best possible model based on AIC results. That is why New Zealand and Japan have different parameters.</p>
+    <figure>
+        <img src="images/jap_sarima.png" alt="Japan SARIMA plot" style="width:100%"/>
+        <figcaption>Fig.11 - The SARIMA model and forecasting for Japan average temperature</figcaption>
+    </figure>
+            <p></p><figure>
+        <img src="images/nzl_sarima.png" alt="New Zealand SARIMA plot" style="width:100%"/>
+        <figcaption>Fig.12 - The SARIMA model and forecasting for New Zealand average temperature</figcaption>
+    </figure>
+	<h3>FORECASTING MODEL - HWES</h3>
+    <p>HWES model doesn't automatically generate confidence intervals. Although the new update for statsmodels contains a new function that can pretend HWES CI, I've decided against it and use what statsmodel documentation suggests - repeating the simulations.</p>
+        <figure>
+        <img src="images/jap_hwes.png" alt="Japan HWES plot" style="width:100%"/>
+        <figcaption>Fig.13 - The HWES model and forecasting for Japan average temperature</figcaption>
+    </figure>
+            <p></p><figure>
+        <img src="images/nzl_hwes.png" alt="New Zealand HWES plot" style="width:100%"/>
+        <figcaption>Fig.14 - The HWES model and forecasting for New Zealand average temperature</figcaption>
+    </figure>
+	<p></p><h3>CALCULATE MEAN ABSOULTE ERROR:</h3>
+    <p><figcaption>Table 1. The Mean Absolute Error for 3 models and 2 countries</figcaption></p>
+    <table border>
+	<tbody>
+    <tr>
+      <td></td>
+      <td>AUTOREGRESSION</td>
+      <td>SARIMA</td>
+      <td>WHES</td></tr>
+    <tr>
+      <td>JAPAN</td>
+      <td>0.141<!--EndFragment--></td>
+      <td>0.199</td>
+      <td>0.13</td></tr>
+    <tr>
+      <td>NEW ZEALAND</td>
+      <td>0.19</td>
+      <td>0.13</td>
+      <td>0.25</td></tr>
+	</tbody>
+</table><p>As we can see, the MAE is quite small. The smallest value in New Zealand is obtained by SARIMA model, which can be the result of choosing the best order and seasonal order for this model. Surprisingly, for Japan, SARIMA gets the worst value. The best one is WHES model, which is also the worst for New Zealand. Since both countries are to compare to each other I choose not to change the parameter 'trend' and 'seasonal' for them separately, which may show that New Zealand needs other parameters. I've checked that, and unfortunately, the MAE didn't change much -> from 0.25 to 0.24 (that's why I didn't change it in the code), which mean that the WHES model is not suitable for forecasting New Zealand average temperature, but it's the best model for Japan.</body>
+    </html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Data analysis and visualization lab 1</title>
+        <style>
+            figure {
+                height: 800px;
+                width: 800px;
+                align-content: center;
+            }
+        </style>
+        
+    </head>
+    <body>
+    <h1 id="data-analysis-and-visualization">Data analysis and visualization</h1>
+    <h1 id="patrycja-owczarek">Patrycja Owczarek</h1>
+    <h2 id="overview">Overview</h2>
+    <p>The data were downloaded from <a href="https://data.worldbank.org/indicator/SP.POP.TOTL?end=2019&amp;start=1960&amp;view=chart">The World Bank</a> website. The dataset contains information about the country, country code, and population each year from 1960 to 2020.</p>
+    <p>For the area the data was obtained from <a href="https://data.worldbank.org/indicator/AG.LND.TOTL.K2">The World Bank</a> website. Since this dataset contains only data from 1961-2018 the bubble plot was shrink to these years.</p>
+    <p><strong>The number of rows:</strong> 269</p>
+    <p><strong>Used libraries:</strong></p>
+    <ul>
+    <li>pycountry 20.7.3</li>
+    <li>pandas 1.2.3</li>
+    <li>ffmpy 0.3.0</li>
+    <li>matplotlib 3.3.4</li>
+    </ul>
+    <h2 id="data-cleaning">Data cleaning</h2>
+    <p>The same data cleaning method is used in all 3 scripts (as function: clean_dataframe)</p>
+    <p>The dataset contains not only countries but also non-country rows (e.g. European Union or low income), to delete the rows the library pycountry is used. To avoid mistakes, where a country can be named with the least popular variant (e.g. USA instead of the United States of America), the 3-letter country code is used. If the code is not found in pycountry library the whole row is deleted.</p>
+    <p><strong>Number of countries:</strong> 215</p>
+    <p>There are columns with at least one empty value, but they are empty for the low-population country and can be omitted. To avoid picking them for the plot with random choose country the rows with an empty value are deleted.</p>
+    <p>Since, some of the columns are unnecessary fot this plots, they are deleted (column &#39;Indicator Code&#39;, &#39;Indicator Name&#39;, &#39;2020&#39;, &#39;Country Code&#39;, &#39;Unnamed: 65&#39;).</p>
+    <p>Since the bar-chart-race library requires the time stamp as an index, we finish preparing and cleaning data by transposing the whole dataframe, so the years are the first column. </p>
+    <p>For fig 3, where the population is quite small the population is divided by 100k, for the rest figures - by million,</p>
+    <h2 id="creating-bar-plots">Creating bar plots</h2>
+    <p>All plots were created by using the matplotlib library.</p>
+    <h3 id="fig-1">Fig 1-2</h3>
+    <p>Figure 1 and 2 presents 5 of the most populated countries between 1960-2019. Since there are not many changes between population and countries the animation it&#39;s made with only 200 ms per year. As we can see 3 most populated countries are not changing their place: in 1st place China, then India, and then the United States. The last 2 places (4th and 5th) change after few years.</p>
+    <p><figure>
+        <img src="images/fig1.gif" alt="Figure 1 plot" style="width:100%">
+        <figcaption>Fig.1 - The 5 most populated countries between 1960-2019</figcaption>
+    </figure></p>
+        <p><figure>
+        <img src="images/fig2.gif" alt="Figure 2 plot" style="width:100%">
+        <figcaption>Fig.2 - The 5 most populated countries between 1960-2019 (black-white plot)</figcaption>
+    </figure></p>
+    <h3 id="fig-3">Fig 3-4</h3>
+    <p>For this plots, we check which 4 countries are more populated than Japan in 1984. The result was: Brazil, Russian Federation, Indonesia, and United States. These countries (with Japan) were chosen to create the plot which shows changes in these countries between 1960-2019. As we can see Japan change its place from 3rd to 5th and remain at this place until the end. </p>
+    <p><figure>
+        <img src="images/fig3.gif" alt="Figure 3 plot" style="width:100%">
+        <figcaption>Fig.3 - The 4 more populated countries than Japan in 1984, between 1960-2019</figcaption>
+    </figure></p>
+        <p><figure>
+        <img src="images/fig4.gif" alt="Figure 4 plot" style="width:100%">
+        <figcaption>Fig.4 - The 4 more populated countries than Japan in 1984, between 1960-2019 (black-white plot)</figcaption>
+    </figure></p>
+    <h3 id="fig-5">Fig 5-6</h3>
+    <p>This plots show the 2 less populated and 2 more populated countries by compared to Poland each year. This plot has population axis in 100k. As we can see the plot constantly change the countries, but Poland always stays as the middle country.</p>
+    <p><figure>
+        <img src="images/fig5.gif" alt="Figure 5 plot" style="width:100%">
+        <figcaption>Fig.5 - The 4 most close populated countries compared to Poland between 1960-2019</figcaption>
+    </figure></p>
+        <p><figure>
+        <img src="images/fig6.gif" alt="Figure 6 plot" style="width:100%">
+        <figcaption>Fig.6 - The 4 most close populated countries compared to Poland between 1960-2019 (black-white plot)</figcaption>
+    </figure></p>
+
+    <h2 id="creating-line-plots">Creating line plots</h2>
+    <p>Since line plot, looks completely different than bar plots there were some changes in data:
+    - for Poland instead of take each year 4 closest countries I decide to stick to countries closest to population of Poland in 1970 (similar to Japan plots)</p>
+    <p><figure>
+        <img src="images/fig7.gif" alt="Figure 7 plot" style="width:100%">
+        <figcaption>Fig.7 - The 5 most populated countries between 1960-2019</figcaption>
+    </figure></p>
+    <p><figure>
+        <img src="images/fig8.gif" alt="Figure 8 plot" style="width:100%">
+        <figcaption>Fig.8 - The 4 more populated countries than Japan in 1984, between 1960-2019</figcaption>
+    </figure></p>
+        <p><figure>
+        <img src="images/fig9.gif" alt="Figure 9 plot" style="width:100%">
+        <figcaption>Fig.9 - The 4 most close populated countries compared to Poland in 1970, between 1960-2019</figcaption>
+    </figure></p>
+
+        <h2 id="creating-bubble-plots">Creating bubble plots</h2>
+    <p>Similar to line plots there were some changes in data:
+    - for Poland instead of take each year 4 closest countries I decide to stick to countries closest to population of Poland in 1970 (similar to Japan plots)
+    - the size of the bubble is taken from density for each year for each country
+    </p>
+    <p><figure>
+        <img src="images/fig10.gif" alt="Figure 10 plot" style="width:100%">
+        <figcaption>Fig.10 - The 5 most populated countries between 1960-2019</figcaption>
+    </figure></p>
+    <p><figure>
+        <img src="images/fig11.gif" alt="Figure 11 plot" style="width:100%">
+        <figcaption>Fig.11 - The 4 more populated countries than Japan in 1984, between 1960-2019</figcaption>
+    </figure></p>
+        <p><figure>
+        <img src="images/fig12.gif" alt="Figure 12 plot" style="width:100%">
+        <figcaption>Fig.12 - The 4 most close populated countries compared to Poland in 1970, between 1960-2019</figcaption>
+    </figure></p>
+
+            <h2 id="creating-dot-plots">Creating dot plots</h2>
+    <p>For custom plot I've decided to create dot plots.
+        Changes the same as line plots</p>
+    <p><figure>
+        <img src="images/fig13.gif" alt="Figure 13 plot" style="width:100%">
+        <figcaption>Fig.13 - The 7 most populated countries between 1960-2019</figcaption>
+    </figure></p>
+    <p><figure>
+        <img src="images/fig14.gif" alt="Figure 14 plot" style="width:100%">
+        <figcaption>Fig.14 - The 4 more populated countries than Japan in 1984, between 1960-2019</figcaption>
+    </figure></p>
+        <p><figure>
+        <img src="images/fig15.gif" alt="Figure 15 plot" style="width:100%">
+        <figcaption>Fig.15 - The 4 most close populated countries compared to Poland in 1970, between 1960-2019</figcaption>
+    </figure></p>
+
+
+
+    </body>
+    </html>

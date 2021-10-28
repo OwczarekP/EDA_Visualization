@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .error {
+        color: red;
+    }
+  </style>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega@5"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega-lite@4.8.1"></script>
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm//vega-embed@6"></script>
+</head>
+<body>
+  <div id="vis"></div>
+  <script>
+    (function(vegaEmbed) {
+      var spec = {"config": {"view": {"continuousWidth": 400, "continuousHeight": 300}, "legend": {"gradientLength": 400, "labelFontSize": 15, "titleFontSize": 18}, "title": {"fontSize": 24}}, "data": {"url": "https://cdn.jsdelivr.net/npm/vega-datasets@v1.29.0/data/us-10m.json", "format": {"feature": "states", "type": "topojson"}}, "mark": {"type": "geoshape", "stroke": "black"}, "encoding": {"color": {"type": "quantitative", "field": "cases"}, "tooltip": [{"type": "nominal", "field": "state"}, {"type": "quantitative", "field": "cases"}]}, "height": 500, "projection": {"type": "albersUsa"}, "title": "Number of covid-19 cases by state on 06/04/2021", "transform": [{"lookup": "id", "from": {"data": {"name": "data-825413035d15b72b095ba5a206e9081b"}, "key": "fips", "fields": ["state", "cases"]}}], "width": 700, "$schema": "https://vega.github.io/schema/vega-lite/v4.8.1.json", "datasets": {"data-825413035d15b72b095ba5a206e9081b": [{"state": "Alabama", "fips": 1, "cases": 517114}, {"state": "Alaska", "fips": 2, "cases": 63566}, {"state": "Arizona", "fips": 4, "cases": 845488}, {"state": "Arkansas", "fips": 5, "cases": 331261}, {"state": "California", "fips": 6, "cases": 3685210}, {"state": "Colorado", "fips": 8, "cases": 472941}, {"state": "Connecticut", "fips": 9, "cases": 317729}, {"state": "Delaware", "fips": 10, "cases": 96806}, {"state": "District of Columbia", "fips": 11, "cases": 45234}, {"state": "Florida", "fips": 12, "cases": 2090854}, {"state": "Georgia", "fips": 13, "cases": 1042793}, {"state": "Guam", "fips": 66, "cases": 8794}, {"state": "Hawaii", "fips": 15, "cases": 30479}, {"state": "Idaho", "fips": 16, "cases": 182315}, {"state": "Illinois", "fips": 17, "cases": 1265309}, {"state": "Indiana", "fips": 18, "cases": 695532}, {"state": "Iowa", "fips": 19, "cases": 354557}, {"state": "Kansas", "fips": 20, "cases": 305508}, {"state": "Kentucky", "fips": 21, "cases": 433269}, {"state": "Louisiana", "fips": 22, "cases": 446955}, {"state": "Maine", "fips": 23, "cases": 52276}, {"state": "Maryland", "fips": 24, "cases": 419241}, {"state": "Massachusetts", "fips": 25, "cases": 648023}, {"state": "Michigan", "fips": 26, "cases": 785699}, {"state": "Minnesota", "fips": 27, "cases": 530740}, {"state": "Mississippi", "fips": 28, "cases": 306341}, {"state": "Missouri", "fips": 29, "cases": 592195}, {"state": "Montana", "fips": 30, "cases": 105470}, {"state": "Nebraska", "fips": 31, "cases": 212257}, {"state": "Nevada", "fips": 32, "cases": 305655}, {"state": "New Hampshire", "fips": 33, "cases": 86510}, {"state": "New Jersey", "fips": 34, "cases": 933738}, {"state": "New Mexico", "fips": 35, "cases": 192773}, {"state": "New York", "fips": 36, "cases": 1916964}, {"state": "North Carolina", "fips": 37, "cases": 929278}, {"state": "North Dakota", "fips": 38, "cases": 104005}, {"state": "Northern Mariana Islands", "fips": 69, "cases": 159}, {"state": "Ohio", "fips": 39, "cases": 1028800}, {"state": "Oklahoma", "fips": 40, "cases": 440142}, {"state": "Oregon", "fips": 41, "cases": 167685}, {"state": "Pennsylvania", "fips": 42, "cases": 1055498}, {"state": "Puerto Rico", "fips": 72, "cases": 143637}, {"state": "Rhode Island", "fips": 44, "cases": 139549}, {"state": "South Carolina", "fips": 45, "cases": 557803}, {"state": "South Dakota", "fips": 46, "cases": 118680}, {"state": "Tennessee", "fips": 47, "cases": 803916}, {"state": "Texas", "fips": 48, "cases": 2811696}, {"state": "Utah", "fips": 49, "cases": 387874}, {"state": "Vermont", "fips": 50, "cases": 20373}, {"state": "Virgin Islands", "fips": 78, "cases": 2945}, {"state": "Virginia", "fips": 51, "cases": 627605}, {"state": "Washington", "fips": 53, "cases": 373227}, {"state": "West Virginia", "fips": 54, "cases": 144010}, {"state": "Wisconsin", "fips": 55, "cases": 640913}, {"state": "Wyoming", "fips": 56, "cases": 56619}]}};
+      var embedOpt = {"mode": "vega-lite"};
+
+      function showError(el, error){
+          el.innerHTML = ('<div class="error" style="color:red;">'
+                          + '<p>JavaScript Error: ' + error.message + '</p>'
+                          + "<p>This usually means there's a typo in your chart specification. "
+                          + "See the javascript console for the full traceback.</p>"
+                          + '</div>');
+          throw error;
+      }
+      const el = document.getElementById('vis');
+      vegaEmbed("#vis", spec, embedOpt)
+        .catch(error => showError(el, error));
+    })(vegaEmbed);
+
+  </script>
+</body>
+</html>

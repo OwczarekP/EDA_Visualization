@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>DAV_lab07</title>
+      <style>
+          .container {
+    height: 100%;
+    justify-content: center;
+    align-items: center;}
+
+      </style>
+  </head>
+  <body class="container">
+    <h1>Data analysis and visualization, lab 07</h1>
+    <h2>Patrycja Owczarek</h2>
+<div>
+    <h3>Data 1</h3>
+    <link href="images/plot1.html" rel="import" />
+    <p><h5>Used library:</h5> plotly</p>
+    <p><h5>Data source:</h5> <a href="https://www.kaggle.com/parulpandey/palmer-archipelago-antarctica-penguin-data">Kaggle - Palmer Archipelago (Antarctica) penguin data</a></p>
+    <p>The data contains information about Sexual Dimorphism and Environmental Variability within a Community of Antarctic Penguins. The plot I've decided to use is a boxplot, which shows differences in body mass between penguin species and sex.</p>
+    <embed src="images/plot1.html" width=100% height="800px">
+        <figcaption>Fig.1 - The differences between penguin body mass by species and sex</figcaption>
+
+    <h3>Data 2</h3>
+    <link href="images/plot2.html" rel="import"/>
+    <p><h5>Used library:</h5> plotly</p>
+    <p><h5>Data source:</h5> <a href="https://www.kaggle.com/harshitshankhdhar/imdb-dataset-of-top-1000-movies-and-tv-shows">Kaggle - IMDB Dataset of top 1000 movies and tv shows.</a></p>
+    <p>The data contains the information about top movies and tv shows scored on IMDB. The plot I've decided to use is the pie plot, which shows the genres of the top movies. The important thing to notice is that the movie/show could have more than 1 genre, so all genres will be counted to the figure.</p>
+    <embed src="images/plot2.html" width=100% height="600px">
+        <figcaption>Fig.2 - Genres of 1000 top movies/tv shows on IMDB</figcaption>
+
+      <h3>Data 3</h3>
+    <link href="images/plot3.html" rel="import" />
+    <p><h5>Used library:</h5> bokeh</p>
+  <p><h5>Data source:</h5> <a href="https://bdp.stat.gov.pl/">Bank Danych Polska</a></p>
+    <p>The data was obtained from Bank Danych Polska, as a part of the data 'Rolnictwo -> Produkcja artykułów pochodzenia zwierzęcego'. The data are presented as line plot.</p>
+    <embed src="images/plot3.html" width=100% height="600px">
+        <figcaption>Fig.3 - The production of slaughter livestock in Poland between 1946-1998</figcaption>
+
+      <h3>Data 4</h3>
+    <link href="images/plot4.html" rel="import" />
+    <p><h5>Used library:</h5> bokeh</p>
+    <p><h5>Data source:</h5> <a href="https://www.kaggle.com/hmavrodiev/london-bike-sharing-dataset">Kaggle - London bike sharing</a></p>
+    <p>TThe data are presented as a bubble plot. They count the bike share depending on the temperature and weather. The size of the bubble depends on the count..</p>
+    <embed src="images/plot4.html" width=100% height="600px">
+        <figcaption>Fig.4 - London bike sharing depending on temperature and weather</figcaption>
+
+      <h3>Data 5</h3>
+    <link href="images/plot5.html" rel="import" />
+    <p><h5>Used library:</h5> altair</p>
+    <p><h5>Data source:</h5> Own source (web scrapped from Pfam database)</p>
+    <p>The data contains the number of sequences in seed for each family. Because of the size of the file, the data was shrunk randomly. The data were presented in the histogram, which can be zoomed.</p>
+    <embed src="images/plot5.html" width=100% height="800px">
+        <figcaption>Fig.5 - Histogram of the number of sequences of the Pfam seed database</figcaption>
+
+      <h3>Data 6</h3>
+    <link href="images/plot6.html" rel="import" />
+    <p><h5>Used library:</h5> altair</p>
+  <p><h5>Data source:</h5> <a href="https://github.com/nytimes/covid-19-data/blob/master/us-states.csv">Github - US state</a></p>
+    <p>The data contains information about COVID-19 cases in the US by state. Because of the file of the dataset the data was shrink to only shows the data from 06.04.2021 and presented as a map plot, which colour corresponds to the number of cases.</p>
+    <embed src="images/plot6.html" width=100% height="600px">
+        <figcaption>Fig.6 - COVID-19 cases by US state on 06.04.2021</figcaption>
+
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+  </div>
+  </body>
+</html>
